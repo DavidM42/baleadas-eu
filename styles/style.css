@@ -1,0 +1,65 @@
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: #444444;
+    font-size: 11pt;
+    background-color: #FAFAFA;
+}
+
+#settingsOpener {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    cursor:pointer;
+}
+
+#calculateBtn {
+    margin-top: 15px;
+}
+
+#titleImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20vw;
+    min-width: 150px;
+}
+
+#baleadaContainer {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    /* size: 100%; */
+    justify-content: center;
+}
+
+.baleadaImg {
+    visibility: hidden;
+    display: flex;
+    width: 5vw; 
+    align-self: center;
+}
+
+#baleadaManImg {
+    visibility: hidden;
+    display: flex;
+    align-self: center;
+    width: 15vw;    
+}
+
+#resultText {
+    visibility: hidden;
+    font-size: 1.5em;
+    font-weight: 400;
+}
+
+#attributionContainer {
+    text-align: right;
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    font-size: 18px;
+
+    color: #9b9b9b;
+    font-size: 0.75em;
+}

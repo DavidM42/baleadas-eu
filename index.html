@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baleadas Calculator</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/inputs.css">
+    <script src="logic.js"></script>
+</head>
+
+<body>
+    <!-- settings icon from
+        https://www.flaticon.com/free-icon/settings_2099058?term=settings&page=1&position=4&page=1&position=4&related_id=2099058&origin=tag -->
+    <!-- setting price of baleada -->
+    <!-- <img
+        id="settingsOpener"
+        src="assets/settings.svg"
+        alt="Settings opener"
+        height="50"
+        width="50"/> -->
+
+    <div id="container">
+        <!-- TODO compress baleadas images both. Are around 400kb rn need smaller and compressed -->
+        <img src="assets/baleada.png" id="titleImg">
+        <h1>Baleadas calculator!</h1>
+        <h2>So you're an European and you want to buy baleadas in Honduras?</h2>
+        <h3>But how many baleadas could you buy?</h3>
+
+        <div class="form__group">
+            <input type="number" step="0.01" class="form__input" id="euro_amount" name="euro_amount"
+                placeholder="Euros" />
+            <label for="name" class="form__label">Euros</label>
+        </div>
+
+        <div class="form__group">
+            <input type="range" min="1" max="40" step="2" value="20" class="slider" id="baleadasPrice">
+            <label for="name" class="form__label">Lempiras for a baleada</label>
+        </div>
+
+        <button onclick="calculate()" id="calculateBtn">Calculate!</button>
+
+        <h2 id="resultText"></h2>
+
+        <div id="baleadaContainer">
+            <img src="assets/baleada.png" class="baleadaImg">
+            <img src="assets/baleadaMan.png" id="baleadaManImg">
+        </div>
+    </div>
+
+    <div id="attributionContainer">
+        <span>Images by Elena</span>
+        <br>
+        <span>Code by David</span>
+    </div>
+</body>
+
+</html>
