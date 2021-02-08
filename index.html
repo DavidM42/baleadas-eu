@@ -13,21 +13,25 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/inputs.css">
-    <script src="logic.js"></script>
+    
+    <script src="calculate.js"></script>
     <!-- used to test flexbox scaling -->
     <!-- <script src="test.js"></script> -->
+    <script src="priceSlider.js"></script>
 </head>
 
 <body>
     <!-- settings icon from
         https://www.flaticon.com/free-icon/settings_2099058?term=settings&page=1&position=4&page=1&position=4&related_id=2099058&origin=tag -->
     <!-- setting price of baleada -->
-    <!-- <img
+    <img
         id="settingsOpener"
         src="assets/settings.svg"
+        title="Show/hide baleadas price editor"
         alt="Settings opener"
-        height="50"
-        width="50"/> -->
+        height="40"
+        width="40"
+        onclick="priceToggle()"/>
 
     <div id="container">
         <img src="assets/baleada.min.png" id="titleImg">
@@ -35,15 +39,15 @@
         <h2>So you're an European and you want to buy baleadas in Honduras?</h2>
         <h3>But how many baleadas could you buy?</h3>
 
-        <div class="form__group">
-            <input type="number" step="0.01" class="form__input" id="euro_amount" name="euro_amount"
-                placeholder="Euros" />
-            <label for="name" class="form__label">Euros</label>
+        <div id="priceSliderGroup">
+            <input type="range" min="2" max="40" step="2" value="20" class="slider" id="priceSlider">
+            <label for="name" id="priceLabel">20L per Baleada</label>
         </div>
 
         <div class="form__group">
-            <input type="range" min="1" max="40" step="2" value="20" class="slider" id="baleadasPrice">
-            <label for="name" class="form__label">Lempiras for a baleada</label>
+            <input type="number" step="0.01" class="form__input" id="euro_amount" name="euro_amount"
+                placeholder="Euros" />
+            <!-- <label for="name" class="form__label">Euros</label> -->
         </div>
 
         <button onclick="calculate()" id="calculateBtn">Calculate!</button>

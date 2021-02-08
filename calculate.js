@@ -1,3 +1,6 @@
+// can be edited via slider
+let BALEADAS_PRICE = 20;
+
 function hideNodes(nodeClass) {
     // remove all nodes exept first one
     const previousNodes = document.querySelectorAll(nodeClass);
@@ -24,17 +27,18 @@ function multiplyNodesMakeVisible(nodeClass, count, deep) {
     let firstNode = document.querySelector(nodeClass)
     firstNode.style.display = 'flex';
 
-    // change width depending on amount of baleadas to fit better
-    // TODO smarter scaling way
-    // TODO scale via flex container of screen size or something
-    // TODO remove
-    // if (count < 30) {
-    //     firstNode.style.width = '90px';
-    // } else if (count < 50) {
-    //     firstNode.style.width = '60px';
-    // } else if (count < 100) {
-    //     firstNode.style.width = '40px';
-    // }
+    // change flex-basis depending on amount of baleadas to fit better
+    // TODO review this scaling way if it works for most cases
+    if (count > 400) {
+        firstNode.style.flexBasis = '1.5vw';
+    } else if (count > 100) {
+        firstNode.style.flexBasis = '2vw';
+    } else if (count > 50) {
+        firstNode.style.flexBasis = '3vw';
+    } else {
+        // normal fallback
+        firstNode.style.flexBasis = '5vw';
+    }
 
     for (var i = 0, copy; i < count - 1; i++) {
         copy = firstNode.cloneNode(deep);
@@ -75,16 +79,14 @@ async function convertHNLToEuro(euroAmount, localFallbackConversion) {
 }
 
 async function calculateInternal(euro, localFallbackConversion) {
-    // TODO slider with quality
-    const baleadas_price = 20;
-
     const honduras_money = await convertHNLToEuro(euro, localFallbackConversion);
     console.log('Euro is ' + honduras_money + ' lempiras');
-    let baleadasq = honduras_money / baleadas_price;
+    let baleadasq = honduras_money / BALEADAS_PRICE;
     baleadasq = Math.floor(baleadasq);
-    const left_lempiras = Math.round(honduras_money % baleadas_price);
+    const left_lempiras = Math.round(honduras_money % BALEADAS_PRICE);
 
-    // TODO guess how little you need for one
+    // TODO maybe extra mode guess how little you need for one
+    // but kinda easy like 60 cent or something
     if (baleadasq < 1) {
         setResultText('You would <b>not</b> have <b>enough money</b> for a Baleada');
         hideNodes('.baleadaImg');

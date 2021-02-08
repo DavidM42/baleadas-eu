@@ -3,6 +3,9 @@ body {
     color: #444444;
     font-size: 11pt;
     background-color: #FAFAFA;
+
+    /* not 100% sure about this beeing ideal */
+    text-align: center;
 }
 
 #settingsOpener {
@@ -11,6 +14,19 @@ body {
     right: 10px;
 
     cursor:pointer;
+}
+
+#priceSliderGroup {
+    display: none;
+    margin-bottom: 20px;
+}
+
+#priceSlider {
+    margin-bottom: 10px;
+}
+
+#priceLabel {
+    font-size: 1.2em;
 }
 
 #calculateBtn {
@@ -44,7 +60,7 @@ body {
     display: none;
     align-self: center;
     
-    /* TODO improve variables here maybe? */
+    /* is now modified by calculate.js */
     flex-basis: 5vw;
     flex-grow: 0.5;
     flex-shrink: 0.8;
