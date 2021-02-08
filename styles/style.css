@@ -54,11 +54,15 @@ body {
 
 .fullWidthImg {
     width: 100%;
+    height: auto;
 }
 
 .baleadaImg {
     display: none;
     align-self: center;
+
+    /* safari bug fix from https://stackoverflow.com/a/57529046 */
+    align-items: flex-start;
     
     /* is now modified by calculate.js */
     flex-basis: 5vw;
