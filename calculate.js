@@ -23,13 +23,18 @@ function multiplyNodesMakeVisible(nodeClass, count, deep) {
             previousNodes[i].remove();
         }
     };
-
     let firstNode = document.querySelector(nodeClass)
-    firstNode.style.display = 'flex';
+    firstNode.style.display = 'none';
 
     // change flex-basis depending on amount of baleadas to fit better
     // TODO review this scaling way if it works for most cases
-    if (count > 400) {
+    if (count > 10000) {
+        // don't show precise amount of images with such big counts
+        // could crash tab or browser
+        // instead only baleadaMan
+        toggleBaleadaMan(true);
+        return;
+    } else if (count > 400) {
         firstNode.style.flexBasis = '1.5vw';
     } else if (count > 100) {
         firstNode.style.flexBasis = '2vw';
@@ -39,6 +44,7 @@ function multiplyNodesMakeVisible(nodeClass, count, deep) {
         // normal fallback
         firstNode.style.flexBasis = '5vw';
     }
+    firstNode.style.display = 'flex';
 
     for (var i = 0, copy; i < count - 1; i++) {
         copy = firstNode.cloneNode(deep);
@@ -93,7 +99,6 @@ async function calculateInternal(euro, localFallbackConversion) {
         toggleBaleadaMan(true);
     } else {
         toggleBaleadaMan(false);
-        document.getElementById('baleadaManImg').style.visibility = 'hidden';
         setResultText('You would get <b>' + baleadasq + ' Baleadas</b> and you would have <b>' + left_lempiras + ' lempiras left</b>')
         multiplyNodesMakeVisible('.baleadaImg', baleadasq, true);
     }
