@@ -57,13 +57,15 @@ body {
     height: auto;
 }
 
-.baleadaImg {
+.baleadaFlexItems {
     display: none;
     align-self: center;
 
     /* safari bug fix from https://stackoverflow.com/a/57529046 */
     align-items: flex-start;
-    
+}
+
+.baleadaImg {    
     /* is now modified by calculate.js */
     flex-basis: 5vw;
     flex-grow: 0.5;
@@ -71,8 +73,6 @@ body {
 }
 
 #baleadaManImg {
-    display: none;
-    align-self: center;
     width: 15vw;    
 }
 
