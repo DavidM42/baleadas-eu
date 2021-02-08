@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/inputs.css">
     <script src="logic.js"></script>
+    <!-- used to test flexbox scaling -->
+    <!-- <script src="test.js"></script> -->
 </head>
 
 <body>
@@ -24,8 +26,7 @@
         width="50"/> -->
 
     <div id="container">
-        <!-- TODO compress baleadas images both. Are around 400kb rn need smaller and compressed -->
-        <img src="assets/baleada.png" id="titleImg">
+        <img src="assets/baleada.min.png" id="titleImg">
         <h1>Baleadas calculator!</h1>
         <h2>So you're an European and you want to buy baleadas in Honduras?</h2>
         <h3>But how many baleadas could you buy?</h3>
@@ -46,15 +47,18 @@
         <h2 id="resultText"></h2>
 
         <div id="baleadaContainer">
-            <img src="assets/baleada.png" class="baleadaImg">
-            <img src="assets/baleadaMan.png" id="baleadaManImg">
+            <div class="baleadaImg">
+                <img src="assets/baleada.png" class="fullWidthImg">
+            </div>
+            <div id="baleadaManImg">
+                <img src="assets/baleadaMan.png" class="fullWidthImg">
+            </div>
         </div>
     </div>
 
     <div id="attributionContainer">
-        <span>Illustrations by Elena</span>
-        <br>
-        <span>Website by David</span>
+        <span class="attributionLine">Illustrations by Elena</span>
+        <span class="attributionLine">Website by David</span>
     </div>
 </body>
 

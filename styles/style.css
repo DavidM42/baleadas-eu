@@ -29,14 +29,25 @@ body {
     margin-top: 15px;
     display: flex;
     flex-wrap: wrap;
-    /* size: 100%; */
     justify-content: center;
+
+    /* scaling testing helping values */
+    /* height: 200px; */
+    /* overflow: hidden; */
+}
+
+.fullWidthImg {
+    width: 100%;
 }
 
 .baleadaImg {
     display: none;
-    width: 5vw; 
     align-self: center;
+    
+    /* TODO improve variables here maybe? */
+    flex-basis: 5vw;
+    flex-grow: 0.5;
+    flex-shrink: 0.8;
 }
 
 #baleadaManImg {
@@ -59,4 +70,8 @@ body {
     text-align: right;
     color: #9b9b9b;
     font-size: 0.75em;
+}
+
+span.attributionLine {
+    display: block;
 }

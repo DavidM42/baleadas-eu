@@ -8,7 +8,7 @@ function hideNodes(nodeClass) {
         }
     };
     let firstNode = document.querySelector(nodeClass)
-    firstNode.style.display = 'flex';
+    firstNode.style.display = 'none';
 }
 
 function multiplyNodesMakeVisible(nodeClass, count, deep) {
@@ -27,13 +27,14 @@ function multiplyNodesMakeVisible(nodeClass, count, deep) {
     // change width depending on amount of baleadas to fit better
     // TODO smarter scaling way
     // TODO scale via flex container of screen size or something
-    if (count < 30) {
-        firstNode.style.width = '90px';
-    } else if (count < 50) {
-        firstNode.style.width = '60px';
-    } else if (count < 100) {
-        firstNode.style.width = '40px';
-    }
+    // TODO remove
+    // if (count < 30) {
+    //     firstNode.style.width = '90px';
+    // } else if (count < 50) {
+    //     firstNode.style.width = '60px';
+    // } else if (count < 100) {
+    //     firstNode.style.width = '40px';
+    // }
 
     for (var i = 0, copy; i < count - 1; i++) {
         copy = firstNode.cloneNode(deep);
@@ -52,37 +53,32 @@ function toggleBaleadaMan(show) {
 function setResultText(resultText) {
     const element = document.getElementById('resultText');
     element.innerHTML = resultText;
-    element.style.display = 'inline';
+    element.style.display = 'block';
 }
 
-async function convertHNLToEuro(euroAmount) {
-    const baseUrl = 'https://api.exchangerate.host/convert?from=EUR&to=HNL&amount=';
-    try {
-        // try converting via api
-        const r = await fetch(baseUrl + euroAmount);
-        const json = await r.json();
-        if (json.success && json.result) {
-            return json.result;
+async function convertHNLToEuro(euroAmount, localFallbackConversion) {
+    if (!localFallbackConversion) {
+        const baseUrl = 'https://api.exchangerate.host/convert?from=EUR&to=HNL&amount=';
+        try {
+            // try converting via api
+            const r = await fetch(baseUrl + euroAmount);
+            const json = await r.json();
+            if (json.success && json.result) {
+                return json.result;
+            }
+        } catch (e) {
         }
-    } catch(e) {
     }
 
     // fallback hardcoded conversion
-    return euro * 29.28;
+    return euroAmount * 29.28;
 }
 
-async function calculate() {
+async function calculateInternal(euro, localFallbackConversion) {
     // TODO slider with quality
     const baleadas_price = 20;
 
-    const euro = parseFloat(document.getElementById('euro_amount').value);
-    if (isNaN(euro)) {
-        console.warn('Input value was not a number');
-        return;
-    }
-
-
-    const honduras_money = await convertHNLToEuro(euro);
+    const honduras_money = await convertHNLToEuro(euro, localFallbackConversion);
     console.log('Euro is ' + honduras_money + ' lempiras');
     let baleadasq = honduras_money / baleadas_price;
     baleadasq = Math.floor(baleadasq);
@@ -100,3 +96,12 @@ async function calculate() {
         multiplyNodesMakeVisible('.baleadaImg', baleadasq, true);
     }
 }
+
+let calculate = async function() {
+    const euro = parseFloat(document.getElementById('euro_amount').value);
+    if (isNaN(euro)) {
+        console.warn('Input value was not a number');
+        return;
+    }
+    await calculateInternal(euro, false);
+};
