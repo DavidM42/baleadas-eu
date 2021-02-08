@@ -107,3 +107,10 @@ let calculate = async function() {
     }
     await calculateInternal(euro, false);
 };
+
+function enterCalcStart(event) {
+    if (event.key === 'Enter') {
+        // enter key was pressed so start calc
+        calculate();
+    }
+}
