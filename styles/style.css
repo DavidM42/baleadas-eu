@@ -34,32 +34,29 @@ body {
 }
 
 .baleadaImg {
-    visibility: hidden;
-    display: flex;
+    display: none;
     width: 5vw; 
     align-self: center;
 }
 
 #baleadaManImg {
-    visibility: hidden;
-    display: flex;
+    display: none;
     align-self: center;
     width: 15vw;    
 }
 
 #resultText {
-    visibility: hidden;
+    display: none;
     font-size: 1.5em;
     font-weight: 400;
 }
 
 #attributionContainer {
-    text-align: right;
-    position: absolute;
+    position: fixed;
     bottom: 8px;
     right: 16px;
-    font-size: 18px;
 
+    text-align: right;
     color: #9b9b9b;
     font-size: 0.75em;
 }

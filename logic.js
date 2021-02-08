@@ -8,7 +8,7 @@ function hideNodes(nodeClass) {
         }
     };
     let firstNode = document.querySelector(nodeClass)
-    firstNode.style.visibility = 'hidden';
+    firstNode.style.display = 'flex';
 }
 
 function multiplyNodesMakeVisible(nodeClass, count, deep) {
@@ -22,7 +22,7 @@ function multiplyNodesMakeVisible(nodeClass, count, deep) {
     };
 
     let firstNode = document.querySelector(nodeClass)
-    firstNode.style.visibility = 'visible';
+    firstNode.style.display = 'flex';
 
     // change width depending on amount of baleadas to fit better
     // TODO smarter scaling way
@@ -43,16 +43,16 @@ function multiplyNodesMakeVisible(nodeClass, count, deep) {
 
 function toggleBaleadaMan(show) {
     if (show) {
-        document.getElementById('baleadaManImg').style.visibility = 'visible';
+        document.getElementById('baleadaManImg').style.display = 'flex';
     } else {
-        document.getElementById('baleadaManImg').style.visibility = 'hidden';
+        document.getElementById('baleadaManImg').style.display = 'none';
     }
 }
 
 function setResultText(resultText) {
     const element = document.getElementById('resultText');
     element.innerHTML = resultText;
-    element.style.visibility = 'visible';
+    element.style.display = 'inline';
 }
 
 async function convertHNLToEuro(euroAmount) {
