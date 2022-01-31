@@ -113,9 +113,23 @@ let calculate = async function() {
     await calculateInternal(euro, false);
 };
 
-function enterCalcStart(event) {
+let debounceTimer;
+/**
+ * Generic debounce helper 
+ * @param func Function to debounce
+ * @param debounceTime Time in ms to debounce function to
+ */
+function priceCalcModernDebounce(func, debounceTime) {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(func, debounceTime);
+}
+
+function keyUpCalcStart(event) {
     if (event.key === 'Enter') {
         // enter key was pressed so start calc
         calculate();
+    } else {
+        // typeahead with 500ms debounce
+        priceCalcModernDebounce(calculate, 500);
     }
 }

@@ -18,6 +18,9 @@
     <!-- used to test flexbox scaling -->
     <!-- <script src="test.js"></script> -->
     <script src="priceSlider.js"></script>
+
+    <!-- gdpr compliant analytics -->
+    <script defer data-domain="baleadas.eu" src="https://plausible.merzlabs.de/js/plausible.js"></script>
 </head>
 
 <body>
@@ -46,7 +49,7 @@
 
         <div class="form__group">
             <input type="number" step="0.01" class="form__input" id="euro_amount" name="euro_amount"
-                placeholder="Euros" onkeyup="enterCalcStart(event)"/>
+                placeholder="Euros" onkeyup="keyUpCalcStart(event)" />
             <!-- <label for="name" class="form__label">Euros</label> -->
         </div>
 
